@@ -1,0 +1,137 @@
+/*
+  Fyra — landing page styles
+  Subject: free serialized-romance-novel reading app (El Salvador / LatAm Spanish readers).
+  Layout: single scrolling page — hero, three feature cards, one featured-novel spread,
+  social footer. Dramatic display serif for titles, a plain workhorse sans for body text.
+*/
+:root{
+  --bg:#F7EEE1;
+  --surface:#FFFBF4;
+  --ink:#2B1016;
+  --ink-soft:#75565A;
+  --accent:#AB2745;
+  --gold:#A9802E;
+  --font-display:'Fraunces',ui-serif,Georgia,serif;
+  --font-body:'Figtree',ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C0E13;
+    --surface:#2A171C;
+    --ink:#F4E7D9;
+    --ink-soft:#CBABA8;
+    --accent:#E27389;
+    --gold:#D9B45C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C0E13;
+  --surface:#2A171C;
+  --ink:#F4E7D9;
+  --ink-soft:#CBABA8;
+  --accent:#E27389;
+  --gold:#D9B45C;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+p{margin:0;line-height:1.6}
+a{color:inherit}
+img{max-width:100%}
+.eyebrow{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+/* Hero */
+.hero{padding:52px 0 40px;display:flex;flex-direction:column;gap:20px}
+.hero h1{font-size:clamp(2.1rem,7vw,3.1rem);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:var(--ink-soft);max-width:46ch}
+.hero-art{
+  margin-top:8px;border-radius:18px;overflow:hidden;
+  box-shadow:0 18px 40px -22px rgba(43,16,22,.55);
+  aspect-ratio:4/3;
+}
+.hero-art img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.btn{
+  font-family:var(--font-body);font-weight:600;font-size:.95rem;
+  padding:13px 22px;border-radius:999px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;
+  transition:transform .15s ease;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:#FFF9F4}
+.btn-ghost{
+  background:transparent;border-color:color-mix(in srgb, var(--ink-soft) 45%, transparent);
+  color:var(--ink);
+}
+.btn-ghost .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block}
+
+/* Features */
+.features{padding:36px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:620px){.features{grid-template-columns:1fr}}
+.feature{
+  background:var(--surface);border-radius:14px;padding:20px 18px;
+  display:flex;flex-direction:column;gap:10px;
+  border:1px solid color-mix(in srgb, var(--ink-soft) 16%, transparent);
+}
+.feature svg{width:22px;height:22px;stroke:var(--accent)}
+.feature h3{font-size:1.02rem;font-weight:600;font-family:var(--font-body)}
+.feature p{font-size:.9rem;color:var(--ink-soft)}
+
+/* Featured novel */
+.novel{padding:40px 0 48px}
+.novel-card{
+  background:var(--surface);border-radius:22px;padding:28px;
+  display:grid;grid-template-columns:140px 1fr;gap:24px;align-items:start;
+  border:1px solid color-mix(in srgb, var(--ink-soft) 16%, transparent);
+}
+@media (max-width:560px){.novel-card{grid-template-columns:1fr}}
+.cover{
+  aspect-ratio:3/4;border-radius:10px;overflow:hidden;
+  box-shadow:0 14px 28px -16px rgba(43,16,22,.6);
+}
+.cover img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block}
+.novel-meta{display:flex;flex-direction:column;gap:12px;min-width:0}
+.novel-meta .tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{
+  font-size:.72rem;font-weight:600;letter-spacing:.04em;
+  color:var(--ink-soft);border:1px solid color-mix(in srgb, var(--ink-soft) 40%, transparent);
+  border-radius:999px;padding:3px 10px;
+}
+.novel-meta h2{font-size:1.5rem;font-weight:600}
+.novel-meta p{color:var(--ink-soft);font-size:.96rem}
+.novel-meta .btn{align-self:flex-start;margin-top:4px}
+
+/* Social / footer */
+footer{
+  padding:40px 0 max(36px, env(safe-area-inset-bottom, 0px));
+  border-top:1px solid color-mix(in srgb, var(--ink-soft) 18%, transparent);
+  display:flex;flex-direction:column;gap:16px;
+}
+.social-row{display:flex;align-items:center;gap:14px}
+.social-link{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;background:var(--surface);
+  border:1px solid color-mix(in srgb, var(--ink-soft) 20%, transparent);
+}
+.social-link svg{width:19px;height:19px;fill:var(--accent)}
+.foot-text{font-size:.85rem;color:var(--ink-soft)}
+.foot-text b{color:var(--ink);font-weight:600}
