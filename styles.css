@@ -1,37 +1,38 @@
 /*
   Fyra — landing page styles
   Subject: free serialized-romance-novel reading app (El Salvador / LatAm Spanish readers).
-  Layout: single scrolling page — hero, three feature cards, one featured-novel spread,
-  social footer. Dramatic display serif for titles, a plain workhorse sans for body text.
+  Palette lifted from the real Fyra app icon (deep plum-navy + orchid/pink gradient + cream).
+  Layout: single scrolling page — hero with the real logo mark, three feature cards, one
+  featured-novel spread (typographic "cover" card, no stock art), social footer.
 */
 :root{
-  --bg:#F7EEE1;
-  --surface:#FFFBF4;
-  --ink:#2B1016;
-  --ink-soft:#75565A;
-  --accent:#AB2745;
-  --gold:#A9802E;
+  --bg:#F8F1F6;
+  --surface:#FFFFFF;
+  --ink:#1E1027;
+  --ink-soft:#7C5E82;
+  --accent:#9A4FAE;
+  --gold:#BD8A3F;
   --font-display:'Fraunces',ui-serif,Georgia,serif;
   --font-body:'Figtree',ui-sans-serif,system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#1C0E13;
-    --surface:#2A171C;
-    --ink:#F4E7D9;
-    --ink-soft:#CBABA8;
-    --accent:#E27389;
-    --gold:#D9B45C;
+    --bg:#160B1F;
+    --surface:#241431;
+    --ink:#F5E7D8;
+    --ink-soft:#BBA0C4;
+    --accent:#CB8EE0;
+    --gold:#E8C97A;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#1C0E13;
-  --surface:#2A171C;
-  --ink:#F4E7D9;
-  --ink-soft:#CBABA8;
-  --accent:#E27389;
-  --gold:#D9B45C;
+  --bg:#160B1F;
+  --surface:#241431;
+  --ink:#F5E7D8;
+  --ink-soft:#BBA0C4;
+  --accent:#CB8EE0;
+  --gold:#E8C97A;
   color-scheme:dark;
 }
 
@@ -59,16 +60,15 @@ img{max-width:100%}
 }
 
 /* Hero */
-.hero{padding:52px 0 40px;display:flex;flex-direction:column;gap:20px}
+.hero{padding:48px 0 40px;display:flex;flex-direction:column;gap:18px}
+.logo-mark{
+  width:76px;height:76px;border-radius:19px;overflow:hidden;
+  box-shadow:0 10px 24px -12px rgba(30,16,39,.45);
+}
+.logo-mark img{width:100%;height:100%;object-fit:cover;display:block}
 .hero h1{font-size:clamp(2.1rem,7vw,3.1rem);font-weight:600;line-height:1.08;letter-spacing:-.01em}
 .hero h1 em{font-style:italic;font-weight:500;color:var(--accent)}
 .hero-sub{font-size:1.05rem;color:var(--ink-soft);max-width:46ch}
-.hero-art{
-  margin-top:8px;border-radius:18px;overflow:hidden;
-  box-shadow:0 18px 40px -22px rgba(43,16,22,.55);
-  aspect-ratio:4/3;
-}
-.hero-art img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
 .btn{
   font-family:var(--font-body);font-weight:600;font-size:.95rem;
@@ -96,19 +96,28 @@ img{max-width:100%}
 .feature h3{font-size:1.02rem;font-weight:600;font-family:var(--font-body)}
 .feature p{font-size:.9rem;color:var(--ink-soft)}
 
-/* Featured novel */
+/* Featured novel — typographic cover, no stock art */
 .novel{padding:40px 0 48px}
 .novel-card{
   background:var(--surface);border-radius:22px;padding:28px;
-  display:grid;grid-template-columns:140px 1fr;gap:24px;align-items:start;
+  display:grid;grid-template-columns:132px 1fr;gap:24px;align-items:start;
   border:1px solid color-mix(in srgb, var(--ink-soft) 16%, transparent);
 }
 @media (max-width:560px){.novel-card{grid-template-columns:1fr}}
 .cover{
   aspect-ratio:3/4;border-radius:10px;overflow:hidden;
-  box-shadow:0 14px 28px -16px rgba(43,16,22,.6);
+  background:linear-gradient(165deg, var(--accent), #3A1B45 70%, var(--ink));
+  box-shadow:0 14px 28px -16px rgba(30,16,39,.6);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:14px 12px;
 }
-.cover img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block}
+.cover .spine-label{font-size:.6rem;font-weight:700;letter-spacing:.12em;color:#F5E7D8CC}
+.cover h4{
+  font-family:var(--font-display);font-style:italic;font-weight:600;
+  color:#F8EEDD;font-size:1.05rem;line-height:1.15;
+}
+.cover .mark{width:30px;height:30px;border-radius:8px;overflow:hidden;align-self:flex-end}
+.cover .mark img{width:100%;height:100%;object-fit:cover;display:block}
 .novel-meta{display:flex;flex-direction:column;gap:12px;min-width:0}
 .novel-meta .tags{display:flex;gap:8px;flex-wrap:wrap}
 .tag{
